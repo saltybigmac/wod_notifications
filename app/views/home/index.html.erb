@@ -1,31 +1,29 @@
-<h1 class="center">Crossfit Deco WOD Notifications</h1>
+<div class="container">
+  <h1 class="center"><%=image_tag("logo.jpg", width: '350')%></h1>
+  <p class="flow-text center">Welcome! Want to be lazy like me and receive the WOD via text every morning
+    at 6 am? Enter your name and phone number to get started!</p>
 
-<h3 class="center">Enter your name and phone number to receive daily wod text notifications</h3>
-
-<% if flash[:notice] %>
-  <div class="container">
+  <% if flash[:notice] %>
     <div class="col s12 m2">
        <p class="z-depth-2 card-panel green lighten-1 notice center"><%= flash[:notice] %></p>
     </div>
-  </div>
-<% elsif flash[:error] %>
-  <div class="container">
+  <% elsif flash[:error] %>
     <div class="col s12 m2">
        <p class="z-depth-2 card-panel red darken-4 notice center"><%= flash[:error] %></p>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-    <%= form_for @phone_number do |f| %>
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name %>
-      <%= f.label :number, "Phone Number" %>
-      <%= f.text_field :number %>
-      <%= f.submit 'Start Receiving WOD Text Notifications'%>
-    <% end %>
+  <div class="card-panel">
+    <div class="row">
+      <div class="col s12">
+        <%= form_for @phone_number do |f| %>
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name %>
+          <%= f.label :number, "Phone Number" %>
+          <%= f.text_field :number %>
+          <%= f.submit 'Start Receiving WOD Text Notifications', class: "col s12 btn waves-effect waves-light center blue darken-1"%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

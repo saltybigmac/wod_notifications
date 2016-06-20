@@ -5,7 +5,7 @@ class PhoneNumbersController < ApplicationController
   def create
     @phone_number = PhoneNumber.create(phone_params)
     if @phone_number.save
-      flash[:notice] = "You will now start receiving WOD notifications daily at 6 am"
+      flash[:notice] = "Unless it is before 6am MST, you will now start receiving WOD notifications daily at 6 am, starting tomorrow"
     else
       flash[:error] = "That phone number is already receiving texts"
     end
