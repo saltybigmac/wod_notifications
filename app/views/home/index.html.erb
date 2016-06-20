@@ -1,3 +1,31 @@
-<p>Hello World!</p>
-<blockquote>Enter your phone number in here so you can receive daily texts of 
-  Crossfit Deco WODs</blockquote>
+<h1 class="center">Crossfit Deco WOD Notifications</h1>
+
+<h3 class="center">Enter your name and phone number to receive daily wod text notifications</h3>
+
+<% if flash[:notice] %>
+  <div class="container">
+    <div class="col s12 m2">
+       <p class="z-depth-2 card-panel green lighten-1 notice center"><%= flash[:notice] %></p>
+    </div>
+  </div>
+<% elsif flash[:error] %>
+  <div class="container">
+    <div class="col s12 m2">
+       <p class="z-depth-2 card-panel red darken-4 notice center"><%= flash[:error] %></p>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+    <%= form_for @phone_number do |f| %>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+      <%= f.label :number, "Phone Number" %>
+      <%= f.text_field :number %>
+      <%= f.submit 'Start Receiving WOD Text Notifications'%>
+    <% end %>
+    </div>
+  </div>
+</div>
