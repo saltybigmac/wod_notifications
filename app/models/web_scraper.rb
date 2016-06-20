@@ -3,7 +3,7 @@ class WebScraper
   end
 
   def parsed_message
-    url = "http://crossfitdeco.com/the-workout-for-#{Time.now.month}-13-#{Time.now.year.to_s.last(2)}-is"
+    url = "http://crossfitdeco.com/the-workout-for-#{Time.now.month}-#{Time.now.day}-#{Time.now.year.to_s.last(2)}-is"
     page = HTTParty.get(url)
     content = Nokogiri::HTML(page)
 
