@@ -1,9 +1,11 @@
 class WebScraper
+  attr_reader :url
+
   def initialize
+    @url = "http://crossfitdeco.com/the-workout-for-#{Time.now.month}-#{Time.now.day}-#{Time.now.year.to_s.last(2)}-is"
   end
 
   def parsed_message
-    url = "http://crossfitdeco.com/the-workout-for-#{Time.now.month}-#{Time.now.day}-#{Time.now.year.to_s.last(2)}-is"
     page = HTTParty.get(url)
     content = Nokogiri::HTML(page)
 
