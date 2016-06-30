@@ -6,16 +6,25 @@ class WebScraper
   end
 
   def parsed_message
-    page = HTTParty.get(url)
-    content = Nokogiri::HTML(page)
-
     wod = []
-    content.css('.inner-paragraph').children.css('td').map do |a|
+    full_content.map do |a|
       if a.text !="" && !a.text.include?("\n")
         wod.push(a.text)
       end
     end
     wod.join(",")
+  end
+
+  def full_content
+    page = HTTParty.get(url)
+    content = Nokogiri::HTML(page)
+    c = content.css('.inner-paragraph').children.css('td')
+
+    if c.empty?
+      c = content.css('.inner-paragraph').children.css('div')
+    end
+
+    c
   end
 
 end
